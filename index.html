@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="compilation" ng-strict-di>
+<head>
+    <meta charset="utf-8">
+    <title>Compilation Demo</title>
+    <link rel="stylesheet" href="app/css/global.css">
+    <script src="http://code.angularjs.org/1.1.1/angular.js"></script>
+    <script src="app/uglifiedJs/minified/app.js"></script>
+</head>
+<body ng-controller="testname">
+{{hallo}}
+<div log-compile="parent" about="" class="page-content">
+    <div log-compile="..child 1" class="chield">
+        <div log-compile="....child 1 a"></div>
+        <div log-compile="....child 1 b"></div>
+    </div>
+    <div log-compile="..child 2" class="chield">
+        <div log-compile="....child 2 a"></div>
+        <div log-compile="....child 2 b"></div>
+    </div>
+</div>
+
+<!-- LOG -->
+<pre>{{log}}</pre>
+</body>
+</html>
