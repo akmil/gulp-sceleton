@@ -13,7 +13,7 @@ var config = {
 var gulp = require('gulp'),
     sass = require('gulp-sass'),//for converting scss to css
     autoprefixer = require('gulp-autoprefixer'),
-    livereload = require('gulp-livereload'),
+    //livereload = require('gulp-livereload'),
     ngAnnotate = require('gulp-ng-annotate'),//minify AngularJs files
     minifyCss = require('gulp-minify-css');/*minify-css : npm install --save-dev gulp-minify-css*/
 
@@ -27,7 +27,7 @@ gulp.task('scss', function () {
 
 
 /**/
-gulp.task('default', function () {
+gulp.task('minifyCSS', function () {
     console.log('***start autoprefixer');
     return gulp.src('app/css/global.css')
         .pipe(autoprefixer({
@@ -36,7 +36,6 @@ gulp.task('default', function () {
         }))
         .pipe(minifyCss()) //minify css
         .pipe(gulp.dest(config.destanationCssFolder));//save to 'app/css' as global.css
-    livereload.listen()
 });
 
 /*uglify : npm install --save-dev gulp-uglify*/
@@ -45,7 +44,7 @@ var uglify = require('gulp-uglify'); //only for pure JS
 gulp.task('compressJS', function() {
     return gulp.src('app/uglifiedJs/*.js')
         .pipe(uglify())
-        .pipe(livereload())
+        //.pipe(livereload())
         .pipe(gulp.dest('app/uglifiedJs/minified'));
 
 });
@@ -61,11 +60,11 @@ gulp.task('compressAngular', function() {
 gulp.task('watch', function () {
 
     gulp.watch('app/scss/*.scss', ['scss']);
-    gulp.watch('app/css/global.css', ['default']);
+    gulp.watch('app/css/global.css', ['minifyCSS']);
     gulp.watch('app/javascript/*.js', ['compressAngular']); //only for pure JS
     gulp.watch('app/uglifiedJs/*.js', ['compressJS']); //only for pure JS
 
-    livereload.listen()//not work
+    //livereload.listen()//not work
 
 
 });

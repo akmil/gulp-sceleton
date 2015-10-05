@@ -1,14 +1,1 @@
-.page-content {
-  background: #33b7ae;
-  float: none;
-  position: relative;
-  border: 1px solid #1f2430; }
-
-.chield {
-  margin: 10px;
-  display: block;
-  transition: all 0.5s;
-  color: #d9dfe2;
-  border: 3px dotted #1f2430;
-  user-select: none;
-  padding: 10px; }
+.page-content{background:#33b7ae;float:none;position:relative;border:1px solid #1f2430}.chield{margin:10px;display:block;transition:all .5s;color:#d9dfe2;border:3px dotted #1f2430;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:15px}

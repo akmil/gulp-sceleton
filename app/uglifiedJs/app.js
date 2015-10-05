@@ -2,19 +2,19 @@
  * Created by Pavlo_Oliynyk on 10/2/2015.
  */
 angular.module('compilation', [])
-    .controller('testname',function($scope,$rootScope){
+    .controller('testname',["$scope", "$rootScope", function($scope,$rootScope){
         $scope.hallo = 'hallo';
         $rootScope.log = 'logg';
-    })
+    }])
 
-    .directive('logCompile', function($rootScope) {
+    .directive('logCompile', ["$rootScope", function($rootScope) {
         $rootScope.log = '..';
 
         return {
-            controller: function($attrs) {
+            controller: ["$attrs", function($attrs) {
                 $rootScope.log = $rootScope.log + ($attrs.logCompile + ' (controller)\n');
                 //$rootScope.log = $rootScope.log + (' (controller)\n');
-            },
+            }],
             compile: function compile(element, attributes) {
                 $rootScope.log = $rootScope.log + (' (compile)\n');
                 $rootScope.log = $rootScope.log + (attributes.logCompile + ' (compile)\n');
@@ -29,7 +29,7 @@ angular.module('compilation', [])
                 };
             }
         };
-    })
+    }])
 
     .directive('terminate',[ function() {
         return {
